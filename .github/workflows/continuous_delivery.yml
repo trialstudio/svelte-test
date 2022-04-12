@@ -6,7 +6,7 @@ on:
 
 jobs:
   cicd:
-    uses: trialstudio/reusable_github_workflows/.github/workflows/nodejs_static_site_container_cd.yml@main
+    uses: ibacangan/aa/.github/workflows/nodejs_static_site_container_cd.yml@main
     with:
       nodejs_version: 16.x
       build_directory: build
