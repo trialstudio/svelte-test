@@ -10,7 +10,6 @@ jobs:
     with:
       nodejs_version: 16.x
       build_directory: build
-      project_name: svelte_test
     secrets:
       github_repo_token: ${{ secrets.GITHUB_TOKEN }}
       aws_assume_role: ${{ secrets.AWS_ASSUME_ROLE }}
