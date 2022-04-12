@@ -1,8 +1,0 @@
-name: Continuous Delivery
-
-on:
-  workflow_dispatch:
-
-jobs:
-  cicd:
-    uses: ibacangan/aa/.github/workflows/test.yml@main
