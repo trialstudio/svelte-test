@@ -13,7 +13,7 @@ jobs:
     uses: trialstudio/reusable_github_workflows/.github/workflows/update_argo_app_config.yml@main
     with:
       APPLICATION_NAME: svelte-test
-      VERSION: ${{ github.events.inputs.version }}
+      VERSION: ${{ github.event.inputs.version }}
       ENVIRONMENT: prod
       DEPLOYMENT_TYPE: static-site
     secrets:
