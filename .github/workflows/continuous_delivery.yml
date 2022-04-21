@@ -3,6 +3,8 @@ name: Continuous Delivery
 on:
   push:
     branches: [main]
+    paths-ignore:
+      - .github
 
 jobs:
   cicd:
@@ -13,13 +15,12 @@ jobs:
     secrets:
       github_repo_token: ${{ secrets.GITHUB_TOKEN }}
       aws_assume_role: ${{ secrets.AWS_ASSUME_ROLE }}
-#  deploy_to_dev:
-#    uses: trialstudio/reusable_github_workflows/.github/workflows/nodejs_deploy_to_s3.yml@main
-#    needs: cicd
-#    with:
-#      release_tag: ${{ needs.cicd.outputs.release_tag }}
-#      bucket: dev.demo-react-app.trial.studio
-#    secrets:
-#      AWS_ACCESS_KEY_ID: ${{ secrets.DEMO_REACT_APP_AWS_ACCESS_ID }}
-#      AWS_SECRET_ACCESS_KEY: ${{ secrets.DEMO_REACT_APP_AWS_SECRET }}
-#      AWS_DEFAULT_REGION: 'us-east-2'
+  deploy_to_dev:
+    uses: trialstudio/reusable_github_workflows/.github/workflows/update_argo_app_config.yml@main
+    with:
+      APPLICATION_NAME: svelte-test
+      VERSION: ${{ needs.cicd.outputs.release_tag }}
+      ENVIRONMENT: dev
+      DEPLOYMENT_TYPE: static-site
+    secrets:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
