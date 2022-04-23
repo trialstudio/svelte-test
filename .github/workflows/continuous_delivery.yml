@@ -23,4 +23,4 @@ jobs:
       ENVIRONMENT: dev
       DEPLOYMENT_TYPE: static-site
     secrets:
-      GITHUB_TOKEN: ${{ secrets.GH_REPO_WRITE }}
+      GH_REPO_WRITE: ${{ secrets.GH_REPO_WRITE }}
